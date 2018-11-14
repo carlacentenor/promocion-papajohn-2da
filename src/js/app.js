@@ -98,3 +98,34 @@ document.addEventListener('click', (event) => {
     }
   }
 });
+
+const templateProducts = (element, container) => {
+  const boxContainer = container;
+
+  const template = ` <div class="pizza-item">
+  <div>
+    <div class="title">
+      <p class="mb-0 pizza__name text-center">${element.name}</p>
+    </div>
+  </div>
+  <div><img class="img-fluid" src="${element.image}"></div>
+  <div><p class="text-center mb-0 pizza__name">S/ ${element.price}</p></div>
+  <div> <p class="pizza--font14 text-center mb-2">${element.description}</p></div>
+  <div class="botones">
+    <div><button class="decrement pizza__button" id="${element.id}decrement"> <i class="fas fa-minus"></i></button></div>
+    <div class="text-center pizza__number-span" id=${element.id}${element.name}>0</div>
+    <div><button class="increment pizza__button"  id="${element.id}aument"><i class="fas fa-plus"></i></button></div>
+  </div>
+</div>`;
+  boxContainer.innerHTML += template;
+};
+
+
+const { pizzas } = data.products;
+
+pizzas.grande.forEach((element) => {
+  templateProducts(element, containerBigPizza);
+});
+pizzas.familiar.forEach((element) => {
+  templateProducts(element, containerFamilyPizza);
+});
